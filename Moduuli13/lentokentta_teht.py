@@ -11,12 +11,12 @@ def getConnection():
         database = "flight_game"
     )
 
-@app.route("/kenttä/<string:iceo>")
-def airportAPI(iceo):
+@app.route("/kenttä/<string:icao>")
+def airportAPI(icao):
     db = getConnection()
     cursor = db.cursor(dictionary = True)
     command = "SELECT ident, name, municipality FROM airport WHERE ident = %s"
-    cursor.execute(command, (iceo,))
+    cursor.execute(command, (icao,))
     result = cursor.fetchone()
 
     if result:
